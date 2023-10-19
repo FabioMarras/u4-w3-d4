@@ -1,7 +1,6 @@
 package fabiomarras.entities;
 
 import javax.persistence.*;
-import java.util.List;
 import java.util.Set;
 import java.util.UUID;
 
@@ -20,7 +19,8 @@ public abstract class Evento {
     @Enumerated(EnumType.STRING)
 
     private TipoEvento tipoEvento;
-    private Integer numeroMassimoPartecipanti;
+    private int numeroMassimoPartecipanti;
+    private int spettatori;
 
     @ManyToMany
     @JoinTable(name = "event_location", joinColumns = @JoinColumn(name = "event_id"),
@@ -36,12 +36,13 @@ public abstract class Evento {
 
     public Evento(){}
 
-    public Evento(String titolo, String dataEvento, String descrizione, TipoEvento tipoEvento,Integer numeroMassimoPartecipanti) {
+    public Evento(String titolo, String dataEvento, String descrizione, TipoEvento tipoEvento, int numeroMassimoPartecipanti, int spettatori) {
         this.titolo = titolo;
         this.dataEvento = dataEvento;
         this.descrizione = descrizione;
         this.tipoEvento = tipoEvento;
         this.numeroMassimoPartecipanti = numeroMassimoPartecipanti;
+        this.spettatori = spettatori;
     }
 
     public void setId(UUID id) {
@@ -108,6 +109,13 @@ public abstract class Evento {
         this.partecipazione = partecipazione;
     }
 
+    public int getSpettatori() {
+        return spettatori;
+    }
+
+    public void setSpettatori(int spettatori) {
+        this.spettatori = spettatori;
+    }
 
     @Override
     public String toString() {
@@ -118,6 +126,7 @@ public abstract class Evento {
                 ", descrizione='" + descrizione + '\'' +
                 ", tipoEvento=" + tipoEvento +
                 ", numeroMassimoPartecipanti=" + numeroMassimoPartecipanti +
+                ", spettatori=" + spettatori +
                 ", locations=" + locations +
                 ", partecipazione=" + partecipazione +
                 ", location=" + location +

@@ -56,5 +56,14 @@ public class EventoDAO {
         System.out.println("Ecco i concerti Rock: ");
         return getAllQuery.getResultList();
     }
-
+    public List<PartitaDiCalcio> filterGaraPareggiato(){
+        TypedQuery<PartitaDiCalcio> getAllQuery = em.createQuery("SELECT p FROM PartitaDiCalcio p WHERE p.vincente = null", PartitaDiCalcio.class);
+        System.out.println("Ecco le partite pareggiate: ");
+        return getAllQuery.getResultList();
+    }
+    public List<PartitaDiCalcio> filterEventiSoldOut(){
+        TypedQuery<PartitaDiCalcio> getAllQuery = em.createQuery("SELECT p FROM PartitaDiCalcio p WHERE p.numeroMassimoPartecipanti = p.spettatori", PartitaDiCalcio.class);
+        System.out.println("Ecco gli Eventi Sold Out: ");
+        return getAllQuery.getResultList();
+    }
 }

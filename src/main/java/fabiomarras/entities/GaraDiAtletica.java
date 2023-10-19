@@ -19,8 +19,8 @@ public class GaraDiAtletica extends Evento {
     public GaraDiAtletica() {
     }
 
-    public GaraDiAtletica(String titolo, String dataEvento, String descrizione, TipoEvento tipoEvento, Integer numeroMassimoPartecipanti, Evento vincitore, List<Person> atleti) {
-        super(titolo, dataEvento, descrizione, tipoEvento, numeroMassimoPartecipanti);
+    public GaraDiAtletica(String titolo, String dataEvento, String descrizione, TipoEvento tipoEvento, Integer numeroMassimoPartecipanti, int spettatori, Evento vincitore, List<Person> atleti) {
+        super(titolo, dataEvento, descrizione, tipoEvento, numeroMassimoPartecipanti, spettatori);
         this.vincitore = vincitore;
         this.atleti = atleti;
     }

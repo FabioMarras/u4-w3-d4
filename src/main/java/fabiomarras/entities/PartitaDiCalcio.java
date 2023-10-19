@@ -18,8 +18,8 @@ public class PartitaDiCalcio extends Evento{
 
     public PartitaDiCalcio(){}
 
-    public PartitaDiCalcio(String titolo, String dataEvento, String descrizione, TipoEvento tipoEvento, Integer numeroMassimoPartecipanti, String squadraDiCasa, String ospite, String vincente, int numGoalCasa, int numGoalOspite) {
-        super(titolo, dataEvento, descrizione, tipoEvento, numeroMassimoPartecipanti);
+    public PartitaDiCalcio(String titolo, String dataEvento, String descrizione, TipoEvento tipoEvento, Integer numeroMassimoPartecipanti, int spettatori, String squadraDiCasa, String ospite, String vincente, int numGoalCasa, int numGoalOspite) {
+        super(titolo, dataEvento, descrizione, tipoEvento, numeroMassimoPartecipanti, spettatori);
         this.squadraDiCasa = squadraDiCasa;
         this.ospite = ospite;
         this.vincente = vincente;
@@ -66,6 +66,7 @@ public class PartitaDiCalcio extends Evento{
     public void setNumGoalOspite(int numGoalOspite) {
         this.numGoalOspite = numGoalOspite;
     }
+
 
     @Override
     public String toString() {

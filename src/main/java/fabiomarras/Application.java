@@ -9,7 +9,7 @@ import java.time.LocalDate;
 import java.util.*;
 
 public class Application {
-    private static final EntityManagerFactory emf = Persistence.createEntityManagerFactory("u4w3d4");
+    private static final EntityManagerFactory emf = Persistence.createEntityManagerFactory("u4w3d4prova");
 
     public static void main(String[] args) {
         EntityManager em = emf.createEntityManager();
@@ -74,7 +74,7 @@ public class Application {
             System.out.println("Questo è il dettaglio di race: ");
             System.out.println(race);*/
 
-            PartitaDiCalcio primaPartita = new PartitaDiCalcio("Partita di calcio","30/10/2023","Partita di serie A", TipoEvento.PUBBLICO,500,"Cagliari", "Cesena", "Ospiti" , 1, 0);
+            PartitaDiCalcio primaPartita = new PartitaDiCalcio("Partita di calcio","30/10/2023","Partita di serie A", TipoEvento.PUBBLICO,500, 500,"Cagliari", "Cesena", "Ospiti" , 1, 2);
             //Concerto primoConcerto = new Concerto(genereConcerto.ROCK, true);
 
             //sd.save1(primaPartita);
@@ -86,11 +86,11 @@ public class Application {
             atleti.add(pd.findById(UUID.fromString("36845c42-f103-4438-96a8-b1f22554e986")));
             atleti.add(pd.findById(UUID.fromString("ce38db99-6be7-468f-bb7b-6db19dfb5ff0")));
 
-            GaraDiAtletica primaGara = new GaraDiAtletica("Gara1", "01/01/2012","prima Gara",TipoEvento.PUBBLICO,50,vincitore,atleti);
+            //GaraDiAtletica primaGara = new GaraDiAtletica("Gara1", "01/01/2012","prima Gara",TipoEvento.PUBBLICO,50,vincitore,atleti);
             //sd.save1(primaGara);
             //System.out.println(primaGara);
 
-            Concerto concertoPrimo = new Concerto("Concerto dal vivo", "27/10/2023", "Concerto +18", TipoEvento.PRIVATO, 50, genereConcerto.CLASSICO, true);
+            //Concerto concertoPrimo = new Concerto("Concerto dal vivo", "27/10/2023", "Concerto +18", TipoEvento.PRIVATO, 50, genereConcerto.CLASSICO, true);
             //sd.save1(concertoPrimo);
 
             Evento mio = sd.findById(UUID.fromString("f086854e-c0c5-4312-aca8-eed057979a00"));
@@ -99,9 +99,15 @@ public class Application {
             sd.findAllTrue().forEach(System.out::println);
             sd.findAllConcertRock().forEach(System.out::println);
             System.out.println("Partite di calcio vinte in casa:");
+
             pdc.filterGaraDiAtleticaWon().forEach(System.out::println);
             System.out.println("Partite di calcio vinte in trasferta:");
+
             pdc.filterGaraDiAtleticaLose().forEach(System.out::println);
+
+
+            sd.filterEventiSoldOut().forEach(System.out::println);
+
 
         } catch (Exception ex){
             System.err.println(ex.getMessage());
