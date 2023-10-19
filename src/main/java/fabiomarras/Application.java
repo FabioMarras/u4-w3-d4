@@ -19,6 +19,7 @@ public class Application {
         PersonDAO pd = new PersonDAO(em);
         PartecipazioneDAO ppd = new PartecipazioneDAO(em);
         LocationDAO ld = new LocationDAO(em);
+        PartitaDiCalcioDAO pdc = new PartitaDiCalcioDAO(em);
 
         // SAVE per salvare un nuovo evento
         Person User = new Person("Fabio","Marras", "fabio@gmail.com" , LocalDate.now(),Genres.M);
@@ -73,7 +74,7 @@ public class Application {
             System.out.println("Questo è il dettaglio di race: ");
             System.out.println(race);*/
 
-            PartitaDiCalcio primaPartita = new PartitaDiCalcio("Cagliari", "Cesena", "Cagliari" , 1, 0);
+            PartitaDiCalcio primaPartita = new PartitaDiCalcio("Partita di calcio","30/10/2023","Partita di serie A", TipoEvento.PUBBLICO,500,"Cagliari", "Cesena", "Ospiti" , 1, 0);
             //Concerto primoConcerto = new Concerto(genereConcerto.ROCK, true);
 
             //sd.save1(primaPartita);
@@ -97,6 +98,10 @@ public class Application {
 
             sd.findAllTrue().forEach(System.out::println);
             sd.findAllConcertRock().forEach(System.out::println);
+            System.out.println("Partite di calcio vinte in casa:");
+            pdc.filterGaraDiAtleticaWon().forEach(System.out::println);
+            System.out.println("Partite di calcio vinte in trasferta:");
+            pdc.filterGaraDiAtleticaLose().forEach(System.out::println);
 
         } catch (Exception ex){
             System.err.println(ex.getMessage());

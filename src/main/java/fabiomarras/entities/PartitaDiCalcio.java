@@ -2,9 +2,13 @@ package fabiomarras.entities;
 
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 
 @Entity
 @DiscriminatorValue("PartitaDiCalcio")
+@NamedQueries({@NamedQuery(name = "gameWonHome", query = "SELECT p FROM PartitaDiCalcio p WHERE p.vincente = 'Casa'"),
+        @NamedQuery(name = "gameWonguests", query = "SELECT p FROM PartitaDiCalcio p WHERE p.vincente = 'Ospiti'")})
 public class PartitaDiCalcio extends Evento{
     private String squadraDiCasa;
     private String ospite;
@@ -14,7 +18,8 @@ public class PartitaDiCalcio extends Evento{
 
     public PartitaDiCalcio(){}
 
-    public PartitaDiCalcio(String squadraDiCasa, String ospite, String vincente, int numGoalCasa, int numGoalOspite) {
+    public PartitaDiCalcio(String titolo, String dataEvento, String descrizione, TipoEvento tipoEvento, Integer numeroMassimoPartecipanti, String squadraDiCasa, String ospite, String vincente, int numGoalCasa, int numGoalOspite) {
+        super(titolo, dataEvento, descrizione, tipoEvento, numeroMassimoPartecipanti);
         this.squadraDiCasa = squadraDiCasa;
         this.ospite = ospite;
         this.vincente = vincente;

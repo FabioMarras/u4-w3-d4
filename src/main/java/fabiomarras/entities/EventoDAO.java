@@ -56,5 +56,5 @@ public class EventoDAO {
         System.out.println("Ecco i concerti Rock: ");
         return getAllQuery.getResultList();
     }
-    
+
 }
