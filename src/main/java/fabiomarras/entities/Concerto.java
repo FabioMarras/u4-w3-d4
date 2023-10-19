@@ -14,7 +14,8 @@ public class Concerto extends Evento{
 
     public Concerto(){}
 
-    public Concerto(fabiomarras.entities.genereConcerto genereConcerto, boolean inStreaming) {
+    public Concerto(String titolo, String dataEvento, String descrizione, TipoEvento tipoEvento, Integer numeroMassimoPartecipanti, fabiomarras.entities.genereConcerto genereConcerto, boolean inStreaming) {
+        super(titolo, dataEvento, descrizione, tipoEvento, numeroMassimoPartecipanti);
         this.genereConcerto = genereConcerto;
         this.inStreaming = inStreaming;
     }
@@ -38,8 +39,14 @@ public class Concerto extends Evento{
     @Override
     public String toString() {
         return "Concerto{" +
-                "genereConcerto=" + genereConcerto +
-                ", inStreaming=" + inStreaming +
+                "id=" + getId() +
+                ", titolo='" + getTitolo() + '\'' +
+                ", dataEvento='" + getDataEvento() + '\'' +
+                ", descrizione='" + getDescrizione() + '\'' +
+                ", tipoEvento=" + getTipoEvento() +
+                ", numeroMassimoPartecipanti=" + getNumeroMassimoPartecipanti() +
+                ", genereConcerto=" + getGenereConcerto() +
+                ", inStreaming=" + isInStreaming() +
                 '}';
     }
 }

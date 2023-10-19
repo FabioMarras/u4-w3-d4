@@ -74,19 +74,29 @@ public class Application {
             System.out.println(race);*/
 
             PartitaDiCalcio primaPartita = new PartitaDiCalcio("Cagliari", "Cesena", "Cagliari" , 1, 0);
-            Concerto primoConcerto = new Concerto(genereConcerto.ROCK, true);
+            //Concerto primoConcerto = new Concerto(genereConcerto.ROCK, true);
 
             //sd.save1(primaPartita);
             //sd.save1(primoConcerto);
 
-            Evento vincitore = sd.findById(UUID.fromString("36845c42-f103-4438-96a8-b1f22554e986"));
+            Evento vincitore = em.find(Evento.class, UUID.fromString("36845c42-f103-4438-96a8-b1f22554e986"));
+
             List<Person> atleti = new ArrayList<>();
             atleti.add(pd.findById(UUID.fromString("36845c42-f103-4438-96a8-b1f22554e986")));
             atleti.add(pd.findById(UUID.fromString("ce38db99-6be7-468f-bb7b-6db19dfb5ff0")));
 
             GaraDiAtletica primaGara = new GaraDiAtletica("Gara1", "01/01/2012","prima Gara",TipoEvento.PUBBLICO,50,vincitore,atleti);
             //sd.save1(primaGara);
-            
+            //System.out.println(primaGara);
+
+            Concerto concertoPrimo = new Concerto("Concerto dal vivo", "27/10/2023", "Concerto +18", TipoEvento.PRIVATO, 50, genereConcerto.CLASSICO, true);
+            //sd.save1(concertoPrimo);
+
+            Evento mio = sd.findById(UUID.fromString("f086854e-c0c5-4312-aca8-eed057979a00"));
+            //System.out.println(mio);
+
+            sd.findAllTrue().forEach(System.out::println);
+            sd.findAllConcertRock().forEach(System.out::println);
 
         } catch (Exception ex){
             System.err.println(ex.getMessage());

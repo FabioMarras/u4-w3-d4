@@ -2,6 +2,8 @@ package fabiomarras.entities;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
+import javax.persistence.TypedQuery;
+import java.util.List;
 import java.util.UUID;
 
 public class EventoDAO {
@@ -43,4 +45,16 @@ public class EventoDAO {
         transaction.commit();
         System.out.println("Nuovo evento salvato correttamente");
     }
+
+    public List<Concerto> findAllTrue() {
+        TypedQuery<Concerto> getAllQuery = em.createQuery("SELECT c FROM Concerto c WHERE c.inStreaming = true", Concerto.class);
+        System.out.println("Ecco i concerti in streaming: ");
+        return getAllQuery.getResultList();
+    }
+    public List<Concerto> findAllConcertRock() {
+        TypedQuery<Concerto> getAllQuery = em.createQuery("SELECT c FROM Concerto c WHERE c.genereConcerto = 'ROCK'", Concerto.class);
+        System.out.println("Ecco i concerti Rock: ");
+        return getAllQuery.getResultList();
+    }
+    
 }
